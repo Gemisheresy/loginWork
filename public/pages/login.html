@@ -1,16 +1,10 @@
 <div>
-<form  action="/welcome" method="post" enctype='application/json'>
+<form  ng-submit="submit()">
     <label>Enter a Username</label></br>
     <input type="text" required="true" name="userName" ></br>
     <label>Enter a Password</label></br>
     <input type="password" required="'true" name="passsword" ></br>
     <input id ='login' type="submit" value="Submit">
 </form>
-    <script>
-        var el = document.getElementById('login');
-        el.addEventListener('submit',function(e){
-            e.preventDefault();
-
-        })
     </script>
  </div>
