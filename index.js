@@ -6,17 +6,17 @@ var app = express();
 
 app.use('/public', express.static(__dirname + '/public'))
 
-app.get('/login',function(req,res){
+app.get('/',function(req,res){
     res.sendFile(__dirname + '/public/index.html');
 });
 
 
-app.use('/welcome',urlencodedParser,function(req,res,next){
+app.use('/login/validation',jsonParser,function(req,res,next){
     console.log(req.body);
     next();
 });
-app.post('/welcome',function(req,res){
-    res.sendFile(__dirname + '/welcome.html');
+app.post('/login/validation',function(req,res){
+    res.send('success');
 });
 
 var server = app.listen(8080,function(){
@@ -24,3 +24,4 @@ var server = app.listen(8080,function(){
     var port = server.address().port;
     console.log('App listening at http://%s:%s',host,port);
 });
+console.log(__dirname);

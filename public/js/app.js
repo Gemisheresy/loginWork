@@ -17,6 +17,9 @@ myApp.config(function($routeProvider){
             templateUrl: 'public/pages/signuppage.html',
             controller: 'signupController'
         })
+        .when('/validation',{
+            templateUrl : 'public/pages/validating.html'
+        })
 });
 
 

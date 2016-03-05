@@ -4,9 +4,26 @@ myApp.controller('mainController', ['$scope','$location',function($scope,$locati
 }]);
 
 
-myApp.controller('loginController',['$scope','$location',function($scope,$location){
+myApp.controller('loginController',['$scope','$location','$http',function($scope,$location,$http){
+    $scope.userName = '';
+    $scope.password = '';
     $scope.submit= function (){
-        $location.path('/welcome')
+        $location.path('/validating.html')
+        var req = {
+            method: 'POST',
+            url: '/login/validation',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            data: { userName : $scope.userName, password : $scope.password }
+        }
+
+        $http(req).then(function(response){
+            $location.path('/welcome')
+        }, function(response){
+            $location.path('/login')
+        });
+
     }
 }]);
 
